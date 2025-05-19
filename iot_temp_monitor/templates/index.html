@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IoT Temperature Monitor</title>
+    <script>
+        function fetchData() {
+            fetch('/temperature')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('temp').innerText = data.temperature + " °C";
+                    document.getElementById('time').innerText = data.time;
+                });
+        }
+        setInterval(fetchData, 2000);  // refresh every 2 seconds
+    </script>
+</head>
+<body>
+    <h1>IoT Temperature Monitor </h1>
+    <h2>Temperature: <span id="temp">--</span></h2>
+    <h3>Last Updated: <span id="time">--</span></h3>
+</body>
+</html>
